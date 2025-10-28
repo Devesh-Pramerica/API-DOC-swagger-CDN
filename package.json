@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^5.1.0",
     "express-basic-auth": "^1.2.1",
+    "swagger-ui-dist": "^5.30.0",
     "yamljs": "^0.3.0"
   }
 }
