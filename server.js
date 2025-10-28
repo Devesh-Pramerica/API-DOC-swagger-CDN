@@ -4,7 +4,7 @@ const path = require("path");
 const basicAuth = require("basic-auth");
 
 const app = express();
-const PORT = 3010;
+const PORT = 3080;
 
 // Basic Authentication Middleware
 const auth = (req, res, next) => {
