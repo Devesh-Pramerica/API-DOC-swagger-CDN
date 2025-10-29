@@ -21,7 +21,7 @@ const auth = (req, res, next) => {
   next();
 };
 
-/*
+
 //With CDN
 //Serve Swagger YAML
 app.get("/swagger4.yaml", auth, (req, res) => {
@@ -56,11 +56,11 @@ app.get("/docs1", auth, (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`Swagger UI: http://localhost:${PORT}/docs`);
+  console.log(`Swagger UI: http://localhost:${PORT}/docs1`);
 });
-*/
 
 
+/*
 //Without CDN
 
 // Serve Swagger UI static assets (locally from node_modules)
@@ -110,4 +110,4 @@ app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
   console.log(`Swagger UI available at http://localhost:${PORT}/docs`);
 });
-
+*/
