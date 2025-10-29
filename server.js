@@ -2,6 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const basicAuth = require("basic-auth");
+const crypto = require("crypto");
 const swaggerUiAssetPath = require("swagger-ui-dist").getAbsoluteFSPath();
 
 const app = express();
@@ -9,7 +10,6 @@ const PORT = 3080;
 
 // Basic Authentication Middleware
 const auth = (req, res, next) => {
-    console.log(req)
   const user = basicAuth(req);
   const username = "admin";
   const password = "password";
@@ -21,27 +21,41 @@ const auth = (req, res, next) => {
   next();
 };
 
+// Middleware to add CSP headers with nonce
+const addCspWithNonce = (req, res, next) => {
+  // Generate a random nonce
+  const nonce = crypto.randomBytes(16).toString("base64");
+  res.locals.nonce = nonce;
 
-//With CDN
-//Serve Swagger YAML
+  // Set CSP header
+  res.set(
+    "Content-Security-Policy",
+    `default-src 'self'; script-src 'self' https://advisoruat.pramericalife.in 'nonce-${nonce}'; style-src 'self' https://advisoruat.pramericalife.in 'nonce-${nonce}' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; font-src 'self' data:;`
+  );
+
+  next();
+};
+
+// Serve Swagger YAML
 app.get("/swagger4.yaml", auth, (req, res) => {
   res.sendFile(path.join(__dirname, "swagger4.yaml"));
 });
 
-//Serve Swagger UI from CDN
-app.get("/docs1", auth, (req, res) => {
-  res.send(`
-<!DOCTYPE html>
+// Serve Swagger UI from CDN with nonce and CSP
+app.get("/docs1", auth, addCspWithNonce, (req, res) => {
+  const nonce = res.locals.nonce;
+
+  res.send(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Swagger UI</title>
-  <link rel="stylesheet" type="text/css" href="https://advisoruat.pramericalife.in/swagger-ui.css" >
+  <link rel="stylesheet" type="text/css" href="https://advisoruat.pramericalife.in/swagger-ui.css" nonce="${nonce}">
 </head>
 <body>
   <div id="swagger-ui"></div>
-  <script src="https://advisoruat.pramericalife.in/swagger-ui-bundle.js"></script>
-  <script>
+  <script src="https://advisoruat.pramericalife.in/swagger-ui-bundle.js" nonce="${nonce}"></script>
+  <script nonce="${nonce}">
     window.onload = function() {
       SwaggerUIBundle({
         url: '/swagger4.yaml',
@@ -50,64 +64,10 @@ app.get("/docs1", auth, (req, res) => {
     };
   </script>
 </body>
-</html>
-  `);
+</html>`);
 });
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
   console.log(`Swagger UI: http://localhost:${PORT}/docs1`);
 });
-
-
-/*
-//Without CDN
-
-// Serve Swagger UI static assets (locally from node_modules)
-
-app.use("/swagger-ui", express.static(swaggerUiAssetPath));
-
-// Serve your Swagger YAML file (protected)
-app.get("/swagger4.yaml", auth, (req, res) => {
-  res.sendFile(path.join(__dirname, "swagger4.yaml"));
-});
-
-// Serve the Swagger UI page (protected)
-app.get("/docs1", auth, (req, res) => {
-  res.send(`
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Swagger UI</title>
-  <link rel="stylesheet" type="text/css" href="/swagger-ui/swagger-ui.css">
-</head>
-<body>
-  <div id="swagger-ui"></div>
-  <script src="/swagger-ui/swagger-ui-bundle.js"></script>
-  <script src="/swagger-ui/swagger-ui-standalone-preset.js"></script>
-  <script>
-    window.onload = function() {
-      const ui = SwaggerUIBundle({
-        url: '/swagger4.yaml',
-        dom_id: '#swagger-ui',
-        presets: [
-          SwaggerUIBundle.presets.apis,
-          SwaggerUIStandalonePreset
-        ],
-        layout: "StandaloneLayout"
-      });
-      window.ui = ui;
-    };
-  </script>
-</body>
-</html>
-  `);
-});
-
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`Swagger UI available at http://localhost:${PORT}/docs1`);
-});
-*/
