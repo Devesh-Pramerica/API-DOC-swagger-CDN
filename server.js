@@ -55,10 +55,13 @@ app.get("/docs1", auth, addCspWithNonce, (req, res) => {
 <body>
   <div id="swagger-ui"></div>
   <script src="https://advisoruat.pramericalife.in/swagger-ui-bundle.js" nonce="${nonce}"></script>
+
+
+
   <script nonce="${nonce}">
     window.onload = function() {
       SwaggerUIBundle({
-        url: 'https://advisoruat.pramericalife.in/swagger4.yaml',
+        url: '/swagger4.yaml',
         dom_id: '#swagger-ui',
       });
     };
