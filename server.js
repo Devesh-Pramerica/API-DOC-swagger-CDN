@@ -37,12 +37,12 @@ const addCspWithNonce = (req, res, next) => {
 };
 
 // Serve Swagger YAML
-app.get("/swagger4.yaml", auth, (req, res) => {
-  res.sendFile(path.join(__dirname, "swagger4.yaml"));
+app.get("/inkasure.yaml", auth, (req, res) => {
+  res.sendFile(path.join(__dirname, "inkasure.yaml"));
 });
 
 // Serve Swagger UI from CDN with nonce and CSP
-app.get("/docs1", auth, addCspWithNonce, (req, res) => {
+app.get("/inkasure", auth, addCspWithNonce, (req, res) => {
   const nonce = res.locals.nonce;
 
   res.send(`<!DOCTYPE html>
@@ -61,7 +61,42 @@ app.get("/docs1", auth, addCspWithNonce, (req, res) => {
   <script nonce="${nonce}">
     window.onload = function() {
       SwaggerUIBundle({
-        url: '/gateway/swagger4.yaml',
+        url: '/gateway/inkasure.yaml',
+        dom_id: '#swagger-ui',
+      });
+    };
+  </script>
+</body>
+</html>`);
+});
+
+//advisory portal
+
+app.get("/agentportal.yaml", auth, (req, res) => {
+  res.sendFile(path.join(__dirname, "agentportal.yaml"));
+});
+
+// Serve Swagger UI from CDN with nonce and CSP
+app.get("/agentportal", auth, addCspWithNonce, (req, res) => {
+  const nonce = res.locals.nonce;
+
+  res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Swagger UI</title>
+  <link rel="stylesheet" type="text/css" href="https://advisoruat.pramericalife.in/swagger-ui.css" nonce="${nonce}">
+</head>
+<body>
+  <div id="swagger-ui"></div>
+  <script src="https://advisoruat.pramericalife.in/swagger-ui-bundle.js" nonce="${nonce}"></script>
+
+
+
+  <script nonce="${nonce}">
+    window.onload = function() {
+      SwaggerUIBundle({
+        url: '/gateway/agentportal.yaml',
         dom_id: '#swagger-ui',
       });
     };
@@ -72,5 +107,6 @@ app.get("/docs1", auth, addCspWithNonce, (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`Swagger UI: http://localhost:${PORT}/docs1`);
+  console.log(`Swagger UI: http://localhost:${PORT}/inkasure`);
+  console.log(`Swagger UI: http://localhost:${PORT}/agentportal`);
 });

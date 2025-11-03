@@ -1,0 +1,350 @@
+openapi: 3.0.0
+info:
+  title: Agent advisory portal APIs
+  version: 1.0.0
+servers:
+  - url: https://apidev.pramericalife.in
+paths:
+  /agent/api/login/agent:
+    post:
+      tags:
+        - General
+      summary: Agent login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: '70004772'
+                password: $/^=64fed003b076648a58f7a45fA
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/alerts/getActivePolicyCount/:
+    post:
+      tags:
+        - General
+      summary: Get active policy
+      requestBody:
+        content: {}
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVMkZzZEdWa1gxK2l2TDlnOXY1QTQ2REtLUmNQRkF0cTBlZkdqZVNsT3NCYWpaako1cHo2b0RuMDVhcmk1MEZ0IiwiZmlyc3ROYW1lIjoiVTJGc2RHVmtYMStSL0dncTlCYTRubWdEbzBkNzkyNXNEbS9RZFZTejd5WT0iLCJsYXN0TmFtZSI6IlUyRnNkR1ZrWDErU1B5d0lSU2JIcjJKSFJPWDgzV1FybDhZYmx4NEg1MFU9IiwidXBkYXRlZEF0IjoiVTJGc2RHVmtYMS9QdmRqMExQb3lkcGo5a3lYdDZiZXFOWktTUmE0TWVDUW5Pc2lWY2poMmVuZlE0bHo0QlQ5ZCIsImFnZW50Q29kZSI6IjcwMDA0NzcyIiwiaXNQYXNzd29yZENoYW5nZWQiOnRydWUsImlhdCI6MTc2MTg5NjU5MSwiZXhwIjoxNzYxOTAzNzkxfQ.OTyAoMh8ikkALXg7MTlzR65MN04R-zHK__MDuqp22QnY90G5TTDRedd5YrV6GI_0D4CZiiz5E_EsBQCGmpEY_-b2w3xk0M0h_ECe7H1L3nzU6pPTCoOGvg7BORsF4dL1OB539Llxm-DXtlTXTYtYPNanrka8Rhz6LRw5ydUQn1fnHZpBfKkulXKVWIXGIH8cz5lsryuwzUynLqUCN0BqNdjG5NEYCfc487HheywxcNM-iFXZ-2SuzUrnNxjKNulYVuuhzv0v9tC3f_MQXf9k6tfif1Ra8lNmkLU3UBx8eBxv64MGqspXTLE26Y94IrpCry4Dr0xDZhcYN34EsERpYn5pwsPYlVO_gDwbFnKu40PIxq6I1404o2n0caddowKFYPdH9arKUkJ3UZygphUXTWiXdZCQkUcK1i1AdvLEwylLSBILex14UW-SJ5H-pb-tP_d_bCvcz2RC0hhyzvc4vYaZZx7dZHZzoQVp8UQYmU1Xmvhk6yb15VwgH3bIjPnFtgeUOUeNtZAOSmarxNsZF2egnCbwc7yR8E6Zdu0QC1RY7xyM6Oll9gRafJKCcOhiKsAEPpCSNarti-_ieT9b1F_cp9-qOCMLo5CBXIsTijZNJOvxJ-dN5iOq3b5Znh5JNFcXlBFdZHUaJ_TTViyZ0AYBPTMeBorzDl_1n-6Ob_A
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/alerts/doblist/:
+    post:
+      tags:
+        - General
+      summary: Doblist
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/alerts/get-actionable-count/:
+    post:
+      tags:
+        - General
+      summary: Get actionable count
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/dashboard/agent-commission-financialyear-wise/:
+    post:
+      tags:
+        - General
+      summary: Agent commission financialyear wise
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                financialYear: 2025-2026
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/policy-detail/current-nav:
+    get:
+      tags:
+        - General
+      summary: Current nav
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/policy-detail/:
+    post:
+      tags:
+        - General
+      summary: Policy detail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                agentId: '70004772'
+                policyKey: 1
+                fromDate: '2000-01-01'
+                toDate: '2026-10-31'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/policy-detail/policyNumber/:
+    post:
+      tags:
+        - General
+      summary: Policy Number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                agentId: '70004772'
+                policyNumber: '00175143'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/alerts/grace-policy-details:
+    post:
+      tags:
+        - General
+      summary: Grace policy
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/alerts/lapsed-policy-details:
+    post:
+      tags:
+        - General
+      summary: Lapsed policy details
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/alerts/upcoming-renewals-details:
+    post:
+      tags:
+        - General
+      summary: Upcoming renewals details
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/alerts/matured-policy-detail:
+    post:
+      tags:
+        - General
+      summary: Matured policy detail
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/alerts/active-policy-detail:
+    post:
+      tags:
+        - General
+      summary: Active policy detail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                ecs: 'yes'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mandates/applicationSTGdb-agent:
+    get:
+      tags:
+        - General
+      summary: ApplicationSTGdb-agent
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mandates/generate-link/AF005332771:
+    post:
+      tags:
+        - General
+      summary: Generate link
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                phone: '8700595059'
+                email: txreplaza2@gmail.com
+                name: GAYATRI SINGH
+                applicationName: Advisor
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/mandates/getStatusByRef/:
+    get:
+      tags:
+        - General
+      summary: GetStatusByRef
+      parameters:
+        - name: app_number
+          in: query
+          schema:
+            type: string
+          example: AF005332771
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/wip-detail/:
+    post:
+      tags:
+        - General
+      summary: Wip-detail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                agentId: '70004772'
+                policyKey: 1
+                fromDate: '2000-01-01'
+                toDate: '2026-10-31'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/dashboard/agent-earning-financialyear-wise:
+    post:
+      tags:
+        - General
+      summary: Agent earning financialyear wise
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                financialYear: 2025-2026
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/downloads/rewardData:
+    post:
+      tags:
+        - General
+      summary: RewardData
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/profile/details/:
+    post:
+      tags:
+        - General
+      summary: Profile details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                AGENT_CODE: '70004772'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/digital-card/status/70004772:
+    get:
+      tags:
+        - General
+      summary: Digital card status
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/auth/agent-details-new:
+    post:
+      tags:
+        - General
+      summary: Agent details new
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                agent_code: '70004772'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/downloads/quarterData:
+    post:
+      tags:
+        - General
+      summary: Downloads quarterData
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
