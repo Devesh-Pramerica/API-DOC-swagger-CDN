@@ -21,6 +21,19 @@ const auth = (req, res, next) => {
   next();
 };
 
+//auth 2
+// Basic Authentication Middleware
+const auth2 = (req, res, next) => {
+  const user = basicAuth(req);
+  const username = "admin";
+  const password = "admin";
+
+  if (!user || user.name !== username || user.pass !== password) {
+    res.set("WWW-Authenticate", 'Basic realm="Swagger UI"');
+    return res.status(401).send("Authentication required.");
+  }
+  next();
+};
 // Middleware to add CSP headers with nonce
 const addCspWithNonce = (req, res, next) => {
   // Generate a random nonce
@@ -72,12 +85,12 @@ app.get("/inkasure", auth, addCspWithNonce, (req, res) => {
 
 //advisory portal
 
-app.get("/agentportal.yaml", auth, (req, res) => {
+app.get("/agentportal.yaml", auth2, (req, res) => {
   res.sendFile(path.join(__dirname, "agentportal.yaml"));
 });
 
 // Serve Swagger UI from CDN with nonce and CSP
-app.get("/agentportal", auth, addCspWithNonce, (req, res) => {
+app.get("/agentportal", auth2, addCspWithNonce, (req, res) => {
   const nonce = res.locals.nonce;
 
   res.send(`<!DOCTYPE html>
