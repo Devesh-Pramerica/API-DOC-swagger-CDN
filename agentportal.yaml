@@ -30,14 +30,16 @@ paths:
       summary: Get active policy
       requestBody:
         content: {}
-      parameters:
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVMkZzZEdWa1gxK2l2TDlnOXY1QTQ2REtLUmNQRkF0cTBlZkdqZVNsT3NCYWpaako1cHo2b0RuMDVhcmk1MEZ0IiwiZmlyc3ROYW1lIjoiVTJGc2RHVmtYMStSL0dncTlCYTRubWdEbzBkNzkyNXNEbS9RZFZTejd5WT0iLCJsYXN0TmFtZSI6IlUyRnNkR1ZrWDErU1B5d0lSU2JIcjJKSFJPWDgzV1FybDhZYmx4NEg1MFU9IiwidXBkYXRlZEF0IjoiVTJGc2RHVmtYMS9QdmRqMExQb3lkcGo5a3lYdDZiZXFOWktTUmE0TWVDUW5Pc2lWY2poMmVuZlE0bHo0QlQ5ZCIsImFnZW50Q29kZSI6IjcwMDA0NzcyIiwiaXNQYXNzd29yZENoYW5nZWQiOnRydWUsImlhdCI6MTc2MTg5NjU5MSwiZXhwIjoxNzYxOTAzNzkxfQ.OTyAoMh8ikkALXg7MTlzR65MN04R-zHK__MDuqp22QnY90G5TTDRedd5YrV6GI_0D4CZiiz5E_EsBQCGmpEY_-b2w3xk0M0h_ECe7H1L3nzU6pPTCoOGvg7BORsF4dL1OB539Llxm-DXtlTXTYtYPNanrka8Rhz6LRw5ydUQn1fnHZpBfKkulXKVWIXGIH8cz5lsryuwzUynLqUCN0BqNdjG5NEYCfc487HheywxcNM-iFXZ-2SuzUrnNxjKNulYVuuhzv0v9tC3f_MQXf9k6tfif1Ra8lNmkLU3UBx8eBxv64MGqspXTLE26Y94IrpCry4Dr0xDZhcYN34EsERpYn5pwsPYlVO_gDwbFnKu40PIxq6I1404o2n0caddowKFYPdH9arKUkJ3UZygphUXTWiXdZCQkUcK1i1AdvLEwylLSBILex14UW-SJ5H-pb-tP_d_bCvcz2RC0hhyzvc4vYaZZx7dZHZzoQVp8UQYmU1Xmvhk6yb15VwgH3bIjPnFtgeUOUeNtZAOSmarxNsZF2egnCbwc7yR8E6Zdu0QC1RY7xyM6Oll9gRafJKCcOhiKsAEPpCSNarti-_ieT9b1F_cp9-qOCMLo5CBXIsTijZNJOvxJ-dN5iOq3b5Znh5JNFcXlBFdZHUaJ_TTViyZ0AYBPTMeBorzDl_1n-6Ob_A
+      # parameters:
+      #   - name: Authorization
+      #     in: header
+      #     schema:
+      #       type: string
+      #     example: >-
+      #       Bearer
+      #       eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVMkZzZEdWa1gxK2l2TDlnOXY1QTQ2REtLUmNQRkF0cTBlZkdqZVNsT3NCYWpaako1cHo2b0RuMDVhcmk1MEZ0IiwiZmlyc3ROYW1lIjoiVTJGc2RHVmtYMStSL0dncTlCYTRubWdEbzBkNzkyNXNEbS9RZFZTejd5WT0iLCJsYXN0TmFtZSI6IlUyRnNkR1ZrWDErU1B5d0lSU2JIcjJKSFJPWDgzV1FybDhZYmx4NEg1MFU9IiwidXBkYXRlZEF0IjoiVTJGc2RHVmtYMS9QdmRqMExQb3lkcGo5a3lYdDZiZXFOWktTUmE0TWVDUW5Pc2lWY2poMmVuZlE0bHo0QlQ5ZCIsImFnZW50Q29kZSI6IjcwMDA0NzcyIiwiaXNQYXNzd29yZENoYW5nZWQiOnRydWUsImlhdCI6MTc2MTg5NjU5MSwiZXhwIjoxNzYxOTAzNzkxfQ.OTyAoMh8ikkALXg7MTlzR65MN04R-zHK__MDuqp22QnY90G5TTDRedd5YrV6GI_0D4CZiiz5E_EsBQCGmpEY_-b2w3xk0M0h_ECe7H1L3nzU6pPTCoOGvg7BORsF4dL1OB539Llxm-DXtlTXTYtYPNanrka8Rhz6LRw5ydUQn1fnHZpBfKkulXKVWIXGIH8cz5lsryuwzUynLqUCN0BqNdjG5NEYCfc487HheywxcNM-iFXZ-2SuzUrnNxjKNulYVuuhzv0v9tC3f_MQXf9k6tfif1Ra8lNmkLU3UBx8eBxv64MGqspXTLE26Y94IrpCry4Dr0xDZhcYN34EsERpYn5pwsPYlVO_gDwbFnKu40PIxq6I1404o2n0caddowKFYPdH9arKUkJ3UZygphUXTWiXdZCQkUcK1i1AdvLEwylLSBILex14UW-SJ5H-pb-tP_d_bCvcz2RC0hhyzvc4vYaZZx7dZHZzoQVp8UQYmU1Xmvhk6yb15VwgH3bIjPnFtgeUOUeNtZAOSmarxNsZF2egnCbwc7yR8E6Zdu0QC1RY7xyM6Oll9gRafJKCcOhiKsAEPpCSNarti-_ieT9b1F_cp9-qOCMLo5CBXIsTijZNJOvxJ-dN5iOq3b5Znh5JNFcXlBFdZHUaJ_TTViyZ0AYBPTMeBorzDl_1n-6Ob_A
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -50,6 +52,8 @@ paths:
       summary: Doblist
       requestBody:
         content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -62,6 +66,8 @@ paths:
       summary: Get actionable count
       requestBody:
         content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -79,6 +85,8 @@ paths:
               type: object
               example:
                 financialYear: 2025-2026
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -89,6 +97,8 @@ paths:
       tags:
         - General
       summary: Current nav
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -109,6 +119,8 @@ paths:
                 policyKey: 1
                 fromDate: '2000-01-01'
                 toDate: '2026-10-31'
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -127,6 +139,8 @@ paths:
               example:
                 agentId: '70004772'
                 policyNumber: '00175143'
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -139,6 +153,8 @@ paths:
       summary: Grace policy
       requestBody:
         content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -151,6 +167,8 @@ paths:
       summary: Lapsed policy details
       requestBody:
         content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -163,6 +181,8 @@ paths:
       summary: Upcoming renewals details
       requestBody:
         content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -175,6 +195,8 @@ paths:
       summary: Matured policy detail
       requestBody:
         content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -192,6 +214,8 @@ paths:
               type: object
               example:
                 ecs: 'yes'
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -202,6 +226,8 @@ paths:
       tags:
         - General
       summary: ApplicationSTGdb-agent
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -222,6 +248,8 @@ paths:
                 email: txreplaza2@gmail.com
                 name: GAYATRI SINGH
                 applicationName: Advisor
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -238,6 +266,8 @@ paths:
           schema:
             type: string
           example: AF005332771
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -258,6 +288,8 @@ paths:
                 policyKey: 1
                 fromDate: '2000-01-01'
                 toDate: '2026-10-31'
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -275,6 +307,8 @@ paths:
               type: object
               example:
                 financialYear: 2025-2026
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -287,6 +321,8 @@ paths:
       summary: RewardData
       requestBody:
         content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -304,6 +340,8 @@ paths:
               type: object
               example:
                 AGENT_CODE: '70004772'
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -314,6 +352,8 @@ paths:
       tags:
         - General
       summary: Digital card status
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -331,6 +371,8 @@ paths:
               type: object
               example:
                 agent_code: '70004772'
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
@@ -343,8 +385,16 @@ paths:
       summary: Downloads quarterData
       requestBody:
         content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:  # Arbitrary name for your security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT # Optional, but good for clarity
