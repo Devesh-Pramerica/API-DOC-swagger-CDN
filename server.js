@@ -50,12 +50,12 @@ const addCspWithNonce = (req, res, next) => {
 };
 
 // Serve Swagger YAML
-app.get("/inkaSure.yaml", auth, (req, res) => {
-  res.sendFile(path.join(__dirname, "inkaSure.yaml"));
+app.get("/inkasure.yaml", auth, (req, res) => {
+  res.sendFile(path.join(__dirname, "inkasure.yaml"));
 });
 
 // Serve Swagger UI from CDN with nonce and CSP
-app.get("/inkaSure", auth, addCspWithNonce, (req, res) => {
+app.get("/inkasure", auth, addCspWithNonce, (req, res) => {
   const nonce = res.locals.nonce;
 
   res.send(`<!DOCTYPE html>
@@ -74,7 +74,7 @@ app.get("/inkaSure", auth, addCspWithNonce, (req, res) => {
   <script nonce="${nonce}">
     window.onload = function() {
       SwaggerUIBundle({
-        url: '/gateway/inkaSure.yaml',
+        url: '/gateway/inkasure.yaml',
         dom_id: '#swagger-ui',
       });
     };
@@ -85,12 +85,12 @@ app.get("/inkaSure", auth, addCspWithNonce, (req, res) => {
 
 //advisory portal
 
-app.get("/agentPortal.yaml", auth2, (req, res) => {
-  res.sendFile(path.join(__dirname, "agentPortal.yaml"));
+app.get("/agentportal.yaml", auth2, (req, res) => {
+  res.sendFile(path.join(__dirname, "agentportal.yaml"));
 });
 
 // Serve Swagger UI from CDN with nonce and CSP
-app.get("/agentPortal", auth2, addCspWithNonce, (req, res) => {
+app.get("/agentportal", auth2, addCspWithNonce, (req, res) => {
   const nonce = res.locals.nonce;
 
   res.send(`<!DOCTYPE html>
@@ -109,7 +109,7 @@ app.get("/agentPortal", auth2, addCspWithNonce, (req, res) => {
   <script nonce="${nonce}">
     window.onload = function() {
       SwaggerUIBundle({
-        url: '/gateway/agentPortal.yaml',
+        url: '/gateway/agentportal.yaml',
         dom_id: '#swagger-ui',
       });
     };
