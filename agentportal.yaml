@@ -104,11 +104,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /agent/api/policy-detail/:
+  /agent/api/policy-detail/getPolicyDetails:
     post:
       tags:
         - General
-      summary: Policy detail
+      summary: Get policy detail
       requestBody:
         content:
           application/json:
