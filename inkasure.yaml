@@ -3,7 +3,7 @@ info:
   title: Inkasure APIs
   version: 1.0.0
 servers:
-  - url: https://apitest.pramericalife.in
+  - url: https://apidev.pramericalife.in
 paths:
   /api/wrapper/fetchData:
     post:
