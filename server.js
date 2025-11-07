@@ -19,6 +19,11 @@ app.use(cors({
   credentials: true,
 }));
 
+app.options('*', cors({
+  origin: allowedOrigin,
+  credentials: true,
+}));
+
 
 // Basic Authentication Middleware
 const auth = (req, res, next) => {
