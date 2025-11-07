@@ -75,7 +75,7 @@ console.log(clientIP);
   <script nonce="${nonce}">
     window.onload = function() {
       SwaggerUIBundle({
-        url: 'gateway/inkasure.yaml',
+        url: '/gateway/inkasure.yaml',
         dom_id: '#swagger-ui',
       });
     };
@@ -110,7 +110,7 @@ app.get("/agentportal", auth2, addCspWithNonce, (req, res) => {
   <script nonce="${nonce}">
     window.onload = function() {
       SwaggerUIBundle({
-        url: 'gateway/agentportal.yaml',
+        url: '/gateway/agentportal.yaml',
         dom_id: '#swagger-ui',
       });
     };
