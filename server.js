@@ -61,7 +61,7 @@ const addCspWithNonce = (req, res, next) => {
 app.get("/inkasure.yaml", auth, (req, res) => {
   res.sendFile(path.join(__dirname, "inkasure.yaml"));
 });
-
+app.use(cors())
 // Serve Swagger UI from CDN with nonce and CSP
 app.get("/inkasure", auth, addCspWithNonce, (req, res) => {
   const nonce = res.locals.nonce;
@@ -133,4 +133,3 @@ app.listen(PORT, () => {
   console.log(`Swagger UI: http://localhost:${PORT}/inkasure`);
   console.log(`Swagger UI: http://localhost:${PORT}/agentportal`);
 });
-app.use(cors())
