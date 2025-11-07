@@ -4,17 +4,21 @@ const path = require("path");
 const basicAuth = require("basic-auth");
 const crypto = require("crypto");
 const swaggerUiAssetPath = require("swagger-ui-dist").getAbsoluteFSPath();
-var cors = require('cors')
+
 const app = express();
 const PORT = 3080;
 
-app.use(function (req, res, next) {
-res.setHeader('Access-Control-Allow-Origin', 'https://apidev.pramericalife.in');
-res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-res.setHeader('Access-Control-Allow-Credentials', true);
-next();
-});
+const cors = require("cors");
+
+const allowedOrigin = "https://apidev.pramericalife.in";
+
+app.use(cors({
+  origin: allowedOrigin,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+  credentials: true,
+}));
+
 
 // Basic Authentication Middleware
 const auth = (req, res, next) => {
@@ -61,11 +65,11 @@ const addCspWithNonce = (req, res, next) => {
 app.get("/inkasure.yaml", auth, (req, res) => {
   res.sendFile(path.join(__dirname, "inkasure.yaml"));
 });
-app.use(cors())
+
 // Serve Swagger UI from CDN with nonce and CSP
 app.get("/inkasure", auth, addCspWithNonce, (req, res) => {
   const nonce = res.locals.nonce;
-const clientIP = req?.connection?.remoteAddress;
+const clientIP = headers['x-forwarded-for'] || req?.connection?.remoteAddress;
 console.log(clientIP);
   res.send(`<!DOCTYPE html>
 <html lang="en">
@@ -101,8 +105,7 @@ app.get("/agentportal.yaml", auth2, (req, res) => {
 // Serve Swagger UI from CDN with nonce and CSP
 app.get("/agentportal", auth2, addCspWithNonce, (req, res) => {
   const nonce = res.locals.nonce;
-const clientIP = req?.connection?.remoteAddress;
-console.log(clientIP);
+
   res.send(`<!DOCTYPE html>
 <html lang="en">
 <head>
