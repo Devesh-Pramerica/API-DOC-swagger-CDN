@@ -57,7 +57,7 @@ app.get("/inkasure.yaml", auth, (req, res) => {
 // Serve Swagger UI from CDN with nonce and CSP
 app.get("/inkasure", auth, addCspWithNonce, (req, res) => {
   const nonce = res.locals.nonce;
-const clientIP = headers['x-forwarded-for'] || req?.connection?.remoteAddress;
+const clientIP = req?.connection?.remoteAddress;
 console.log(clientIP);
   res.send(`<!DOCTYPE html>
 <html lang="en">
