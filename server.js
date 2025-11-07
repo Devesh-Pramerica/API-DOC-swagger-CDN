@@ -4,7 +4,7 @@ const path = require("path");
 const basicAuth = require("basic-auth");
 const crypto = require("crypto");
 const swaggerUiAssetPath = require("swagger-ui-dist").getAbsoluteFSPath();
-
+var cors = require('cors')
 const app = express();
 const PORT = 3080;
 
@@ -133,3 +133,4 @@ app.listen(PORT, () => {
   console.log(`Swagger UI: http://localhost:${PORT}/inkasure`);
   console.log(`Swagger UI: http://localhost:${PORT}/agentportal`);
 });
+app.use(cors())
