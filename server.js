@@ -4,7 +4,7 @@ const path = require("path");
 const basicAuth = require("basic-auth");
 const crypto = require("crypto");
 const swaggerUiAssetPath = require("swagger-ui-dist").getAbsoluteFSPath();
-const cors = require("cors");
+
 const app = express();
 const PORT = 3080;
 
@@ -20,21 +20,6 @@ const auth = (req, res, next) => {
   }
   next();
 };
-
-const allowedOrigin = "https://apidev.pramericalife.in";
-
-app.use(cors({
-  origin: allowedOrigin,
-  methods: ["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"],
-  allowedHeaders: ["X-Requested-With", "Content-Type", "Authorization"],
-  credentials: true,
-}));
-
-// Preflight handling
-app.options('*', cors({
-  origin: allowedOrigin,
-  credentials: true,
-}));
 
 //auth 2
 // Basic Authentication Middleware
