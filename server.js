@@ -8,23 +8,6 @@ const swaggerUiAssetPath = require("swagger-ui-dist").getAbsoluteFSPath();
 const app = express();
 const PORT = 3080;
 
-const cors = require("cors");
-
-const allowedOrigin = "https://apidev.pramericalife.in";
-
-app.use(cors({
-  origin: allowedOrigin,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-  credentials: true,
-}));
-
-app.options('*', cors({
-  origin: allowedOrigin,
-  credentials: true,
-}));
-
-
 // Basic Authentication Middleware
 const auth = (req, res, next) => {
   const user = basicAuth(req);
@@ -92,7 +75,7 @@ console.log(clientIP);
   <script nonce="${nonce}">
     window.onload = function() {
       SwaggerUIBundle({
-        url: '/gateway/inkasure.yaml',
+        url: 'gateway/inkasure.yaml',
         dom_id: '#swagger-ui',
       });
     };
@@ -127,7 +110,7 @@ app.get("/agentportal", auth2, addCspWithNonce, (req, res) => {
   <script nonce="${nonce}">
     window.onload = function() {
       SwaggerUIBundle({
-        url: '/gateway/agentportal.yaml',
+        url: 'gateway/agentportal.yaml',
         dom_id: '#swagger-ui',
       });
     };

@@ -5,7 +5,7 @@ info:
 servers:
   - url: https://apitest.pramericalife.in
 paths:
-  /api/wrapper/fetchData:
+  /gateway/wrapper/fetchData:
     post:
       tags:
         - General
