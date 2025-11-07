@@ -5,6 +5,24 @@ info:
 servers:
   - url: https://apitest.pramericalife.in
 paths:
+  /gateway/wrapper/fetchData:
+    post:
+      tags:
+        - General
+      summary: Testing API forToken generation
+      requestBody:
+        content: {}
+      parameters:
+        - name: x-api-key
+          in: header
+          schema:
+            type: string
+          example: H8o4WP2UuA3Vpz6LrlQ7o5B1BNCehUPo4gkqBPxp
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/wrapper/fetchData:
     post:
       tags:
