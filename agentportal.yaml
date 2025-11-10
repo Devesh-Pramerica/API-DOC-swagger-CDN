@@ -5,7 +5,7 @@ info:
 servers:
   - url: https://apitest.pramericalife.in
 paths:
-  /agent/api/login/agent:
+  /agent/login/agent:
     post:
       tags:
         - General
