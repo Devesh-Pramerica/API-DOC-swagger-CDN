@@ -5,7 +5,7 @@ info:
 servers:
   - url: https://apidev.pramericalife.in
 paths:
-  /agent/login/agent:
+  /agent/api/login/agent:
     post:
       tags:
         - General
