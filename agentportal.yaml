@@ -3,7 +3,7 @@ info:
   title: Agent advisory portal APIs
   version: 1.0.0
 servers:
-  - url: https://apitest.pramericalife.in
+  - url: https://apidev.pramericalife.in
 paths:
   /agent/login/agent:
     post:
