@@ -8,7 +8,7 @@ paths:
   /agent/api/login/agent:
     post:
       tags:
-        - General
+        - Login
       summary: Agent login
       requestBody:
         content:
@@ -26,7 +26,7 @@ paths:
   /agent/api/alerts/getActivePolicyCount/:
     post:
       tags:
-        - General
+        - Dashboard
       summary: Get active policy
       requestBody:
         content: {}
@@ -48,7 +48,7 @@ paths:
   /agent/api/alerts/doblist/:
     post:
       tags:
-        - General
+        - Dashboard
       summary: Doblist
       requestBody:
         content: {}
@@ -62,7 +62,7 @@ paths:
   /agent/api/alerts/get-actionable-count/:
     post:
       tags:
-        - General
+        - Dashboard
       summary: Get actionable count
       requestBody:
         content: {}
@@ -76,7 +76,7 @@ paths:
   /agent/api/dashboard/agent-commission-financialyear-wise/:
     post:
       tags:
-        - General
+        - Dashboard
       summary: Agent commission financialyear wise
       requestBody:
         content:
@@ -95,7 +95,7 @@ paths:
   /agent/api/policy-detail/current-nav:
     get:
       tags:
-        - General
+        - Dashboard
       summary: Current nav
       security:
         - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
@@ -107,7 +107,7 @@ paths:
   /agent/api/policy-detail/getPolicyDetails:
     post:
       tags:
-        - General
+        - My customer
       summary: Get policy detail
       requestBody:
         content:
@@ -126,10 +126,38 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /agent/api/policy-detail/policyNumber/:
+  /agent/api/alerts/cancelled-policy-detail:
     post:
       tags:
-        - General
+        - My customer
+      summary: Get cancelled policy details
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/alerts/terminated-policy-detail:
+    post:
+      tags:
+        - My customer
+      summary: Get terminated policy details
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  agent/api/policy-detail/policyNumber/:
+    post:
+      tags:
+        - Get detail with Policy Number
       summary: Policy Number
       requestBody:
         content:
@@ -149,7 +177,7 @@ paths:
   /agent/api/alerts/grace-policy-details:
     post:
       tags:
-        - General
+        - My To-Do List
       summary: Grace policy
       requestBody:
         content: {}
@@ -163,7 +191,7 @@ paths:
   /agent/api/alerts/lapsed-policy-details:
     post:
       tags:
-        - General
+        - My To-Do List
       summary: Lapsed policy details
       requestBody:
         content: {}
@@ -177,7 +205,7 @@ paths:
   /agent/api/alerts/upcoming-renewals-details:
     post:
       tags:
-        - General
+        - My To-Do List
       summary: Upcoming renewals details
       requestBody:
         content: {}
@@ -191,7 +219,7 @@ paths:
   /agent/api/alerts/matured-policy-detail:
     post:
       tags:
-        - General
+        - My To-Do List
       summary: Matured policy detail
       requestBody:
         content: {}
@@ -205,7 +233,7 @@ paths:
   /agent/api/alerts/active-policy-detail:
     post:
       tags:
-        - General
+        - My To-Do List
       summary: Active policy detail
       requestBody:
         content:
@@ -224,7 +252,7 @@ paths:
   /api/mandates/applicationSTGdb-agent:
     get:
       tags:
-        - General
+        - ACH-Mandate
       summary: ApplicationSTGdb-agent
       security:
         - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
@@ -236,7 +264,7 @@ paths:
   /api/mandates/generate-link/AF005332771:
     post:
       tags:
-        - General
+        - ACH-Mandate
       summary: Generate link
       requestBody:
         content:
@@ -258,7 +286,7 @@ paths:
   /agent/api/mandates/getStatusByRef/:
     get:
       tags:
-        - General
+        - ACH-Mandate
       summary: GetStatusByRef
       parameters:
         - name: app_number
@@ -276,7 +304,7 @@ paths:
   /agent/api/wip-detail/:
     post:
       tags:
-        - General
+        - My WIP Report
       summary: Wip-detail
       requestBody:
         content:
@@ -298,7 +326,7 @@ paths:
   /agent/api/dashboard/agent-earning-financialyear-wise:
     post:
       tags:
-        - General
+        - My business
       summary: Agent earning financialyear wise
       requestBody:
         content:
@@ -317,7 +345,7 @@ paths:
   /agent/api/downloads/rewardData:
     post:
       tags:
-        - General
+        - Your activity list
       summary: RewardData
       requestBody:
         content: {}
@@ -328,10 +356,62 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /agent/api/downloads/monthData:
+    post:
+      tags:
+        - Your activity list
+      summary: Month Data
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/downloads/downloadDocument:
+    post:
+      tags:
+        - Download document
+      summary: Tax/Premium Certificate Download
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                AGENT_CODE: '70004772'
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /agent/api/downloads/unitStatement:
+    post:
+      tags:
+        - Download document
+      summary: Unit Statement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                AGENT_CODE: '70004772'
+      security:
+        - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /agent/api/profile/details/:
     post:
       tags:
-        - General
+        - Advisor profile
       summary: Profile details
       requestBody:
         content:
@@ -350,7 +430,7 @@ paths:
   /api/digital-card/status/70004772:
     get:
       tags:
-        - General
+        - Advisor profile
       summary: Digital card status
       security:
         - bearerAuth: [] # Refers to the 'bearerAuth' scheme defined above
@@ -362,7 +442,7 @@ paths:
   /api/auth/agent-details-new:
     post:
       tags:
-        - General
+        - Advisor profile
       summary: Agent details new
       requestBody:
         content:
@@ -381,7 +461,7 @@ paths:
   /agent/api/downloads/quarterData:
     post:
       tags:
-        - General
+        - Advisor profile
       summary: Downloads quarterData
       requestBody:
         content: {}
